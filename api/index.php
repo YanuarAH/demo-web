@@ -32,12 +32,10 @@ $joki_list = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $page_title ?></title>
     <meta name="description" content="<?= $site_config['site_description'] ?>">
-
-    <!-- Font dan Style -->
     <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        body {
+        html, body {
             margin: 0;
             padding: 0;
             background-color: #0f1a2a;
@@ -46,14 +44,11 @@ $joki_list = [
             flex-direction: column;
             min-height: 100vh;
         }
-        header {
-            background-color: #111;
-            padding: 10px 20px;
-            color: #fff;
-        }
+
         .main-content {
             flex: 1;
         }
+
         .kisen-title {
             font-family: 'Metal Mania', cursive;
             font-size: 3rem;
@@ -61,30 +56,37 @@ $joki_list = [
             margin-top: 1.5rem;
             color: #ffc107;
         }
+
         .carousel-section {
             padding: 2rem 1rem;
         }
+
         .carousel-container {
             max-width: 800px;
             margin: 0 auto;
             position: relative;
         }
+
         .carousel-wrapper {
             display: flex;
             overflow: hidden;
             border-radius: 10px;
         }
+
         .carousel-slide {
             flex: 0 0 100%;
             display: none;
         }
+
         .carousel-slide.active {
             display: block;
         }
+
         .carousel-slide img {
             width: 100%;
             border-radius: 10px;
         }
+
         .carousel-nav {
             position: absolute;
             top: 50%;
@@ -93,6 +95,7 @@ $joki_list = [
             justify-content: space-between;
             transform: translateY(-50%);
         }
+
         .carousel-btn {
             background: rgba(0,0,0,0.5);
             color: #fff;
@@ -101,10 +104,12 @@ $joki_list = [
             cursor: pointer;
             padding: 0.2rem 1rem;
         }
+
         .carousel-indicators {
             text-align: center;
             margin-top: 0.5rem;
         }
+
         .indicator {
             display: inline-block;
             width: 12px;
@@ -114,9 +119,11 @@ $joki_list = [
             margin: 0 4px;
             cursor: pointer;
         }
+
         .indicator.active {
             background: #ffc107;
         }
+
         .vertical-link-list {
             display: flex;
             flex-direction: column;
@@ -125,6 +132,7 @@ $joki_list = [
             max-width: 600px;
             padding: 0 1rem;
         }
+
         .vertical-link-list a {
             padding: 14px;
             border-radius: 8px;
@@ -133,20 +141,67 @@ $joki_list = [
             text-decoration: none;
             transition: background-color 0.3s ease;
         }
+
         .vertical-link-list a:nth-child(odd) {
             background-color: #ffc107;
             color: #000;
         }
+
         .vertical-link-list a:nth-child(even) {
             background-color: #1a1a1a;
             color: #fff;
         }
+
         footer {
             background-color: #0a1320;
             color: #aaa;
             text-align: center;
             padding: 1rem;
             font-size: 0.9rem;
+        }
+
+        .image-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        .image-modal-overlay.active {
+            display: flex;
+        }
+
+        .image-modal-content {
+            position: relative;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .image-modal-content img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+        }
+
+        .image-modal-close {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ffc107;
+            color: black;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -157,7 +212,7 @@ $joki_list = [
 <main class="main-content">
     <h1 class="kisen-title">Kisen Joki</h1>
 
-    <!-- Carousel -->
+    <!-- Carousel Section -->
     <section class="carousel-section">
         <div class="carousel-container">
             <div class="carousel-wrapper" id="carouselSlides">
@@ -188,11 +243,11 @@ $joki_list = [
         <a href="#" onclick="openImageModal('assets/images/genshin/listjoki.jpeg')">LIST JOKI</a>
     </div>
 
-    <!-- Modal -->
+    <!-- Image Modal -->
     <div class="image-modal-overlay" id="imageModal">
         <div class="image-modal-content">
             <button class="image-modal-close" onclick="closeImageModal()">×</button>
-            <img id="modalImage" src="" alt="Preview Besar">
+            <img id="modalImage" src="" alt="List Joki">
         </div>
     </div>
 </main>
@@ -201,28 +256,27 @@ $joki_list = [
     © <?= date('Y'); ?> Joki Kisen. All Rights Reserved.
 </footer>
 
+<!-- Scripts -->
 <script>
-    // Modal Logic
-    function openImageModal(src) {
-        const modal = document.getElementById('imageModal');
-        document.getElementById('modalImage').src = src;
-        modal.classList.add('active');
+    // Modal Popup
+    function openImageModal(imageSrc) {
+        document.getElementById('modalImage').src = imageSrc;
+        document.getElementById('imageModal').classList.add('active');
     }
 
     function closeImageModal() {
-        const modal = document.getElementById('imageModal');
-        modal.classList.remove('active');
+        document.getElementById('imageModal').classList.remove('active');
         document.getElementById('modalImage').src = '';
     }
 
-    // Carousel Logic
+    // Carousel
     let currentSlide = 0;
     const slides = document.querySelectorAll('.carousel-slide');
     const indicators = document.querySelectorAll('.indicator');
 
     function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === index);
+        slides.forEach((s, i) => {
+            s.classList.toggle('active', i === index);
             indicators[i].classList.toggle('active', i === index);
         });
         currentSlide = index;
@@ -244,6 +298,5 @@ $joki_list = [
 
     setInterval(nextSlide, 4000);
 </script>
-
 </body>
 </html>
