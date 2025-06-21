@@ -10,9 +10,10 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $page_title; ?></title>
     <meta name="description" content="<?php echo $site_config['site_description']; ?>">
+    <link rel="stylesheet" href="assets/css/style35.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style60.css">
-    <link rel="stylesheet" href="assets/css/style35.css">
+    
 
 </head>
 
