@@ -62,9 +62,9 @@ $joki_list = [
             color: #ffc107;
         }
 
-        .carousel-section {
-            padding: 1rem 0;
-        }
+      .carousel-section {
+    padding: 2rem 1rem; 
+}
 
         .carousel-container {
             max-width: 800px;
@@ -272,7 +272,7 @@ $joki_list = [
         <a href="https://twitter.com/kisenjoki" target="_blank">Twitter KISEN JOKI</a>
     </div>
 
-    <h2 class="section-title">List Joki</h2>
+    <!-- <h2 class="section-title">List Joki</h2>
     <div class="image-grid">
         <?php foreach ($joki_list as $item): ?>
             <div class="image-item">
@@ -280,15 +280,15 @@ $joki_list = [
                 <p><?= $item['title']; ?></p>
             </div>
         <?php endforeach; ?>
-    </div>
+    </div> -->
 
     <!-- Modal -->
-    <div class="image-modal-overlay" id="imageModal">
+    <!-- <div class="image-modal-overlay" id="imageModal">
         <div class="image-modal-content">
             <img id="modalImage" src="" alt="Popup">
             <button class="image-modal-close-text" onclick="closeImageModal()">Close</button>
         </div>
-    </div>
+    </div> -->
 </main>
 
 <footer>
