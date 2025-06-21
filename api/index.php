@@ -5,6 +5,7 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,9 +82,11 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
         .modal-overlay {
             display: none;
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.8);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -97,12 +100,16 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
 
         .modal-content {
             max-width: 100%;
-            max-height: 100%;
+            max-height: 90vh;
             position: relative;
             background-color: #fff;
             border-radius: 8px;
-            overflow: hidden;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 15px;
+            box-sizing: border-box;
         }
+
 
         .modal-content img {
             display: block;
@@ -132,43 +139,45 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
         }
     </style>
 </head>
+
 <body>
 
-<?php include dirname(__DIR__) . '/includes/header.php'; ?>
+    <?php include dirname(__DIR__) . '/includes/header.php'; ?>
 
-<main class="main-content">
-    <img src="assets/images/profile.jpg" alt="Foto Profil" class="profile-pic">
-    <h1 class="kisen-title">Kisen Joki</h1>
+    <main class="main-content">
+        <img src="assets/images/profile.png" alt="Foto Profil" class="profile-pic">
+        <h1 class="kisen-title">Kisen Joki</h1>
 
-    <div class="vertical-link-list">
-        <a href="https://discord.com/invite/PxtScDTj4Y" target="_blank">Discord</a>
-        <a href="<?= $site_config['contact']['saweria']; ?>" target="_blank">Saweria</a>
-        <a href="https://wa.me/6281234567890" target="_blank">WhatsApp</a>
-        <button onclick="openModal()">Price List</button>
+        <div class="vertical-link-list">
+            <a href="https://discord.com/invite/PxtScDTj4Y" target="_blank">Discord</a>
+            <a href="<?= $site_config['contact']['saweria']; ?>" target="_blank">Saweria</a>
+            <a href="https://wa.me/6281234567890" target="_blank">WhatsApp</a>
+            <button onclick="openModal()">Price List</button>
+        </div>
+    </main>
+
+    <!-- Modal Pop-up -->
+    <div class="modal-overlay" id="modalPopup">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">Close</button>
+            <img src="assets/images/genshin/listjoki.jpeg" alt="Daftar Harga">
+        </div>
     </div>
-</main>
 
-<!-- Modal Pop-up -->
-<div class="modal-overlay" id="modalPopup">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeModal()">Close</button>
-        <img src="assets/images/genshin/listjoki.jpeg" alt="Daftar Harga">
-    </div>
-</div>
+    <footer>
+        © <?= date('Y'); ?> Joki Kisen. All Rights Reserved.
+    </footer>
 
-<footer>
-    © <?= date('Y'); ?> Joki Kisen. All Rights Reserved.
-</footer>
+    <script>
+        function openModal() {
+            document.getElementById('modalPopup').classList.add('active');
+        }
 
-<script>
-    function openModal() {
-        document.getElementById('modalPopup').classList.add('active');
-    }
-
-    function closeModal() {
-        document.getElementById('modalPopup').classList.remove('active');
-    }
-</script>
+        function closeModal() {
+            document.getElementById('modalPopup').classList.remove('active');
+        }
+    </script>
 
 </body>
+
 </html>
