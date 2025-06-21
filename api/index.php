@@ -262,10 +262,32 @@ $joki_list = [
             </div>
         </div>
     </section>
+<!-- Saweria Support Section -->
+        <section class="saweria-section">
+            <div class="container">
+                <div class="saweria-banner">
+                    <div class="saweria-content">
+                        <div class="saweria-icon">💰</div>
+                        <div class="saweria-text">
+                            <h3 class="saweria-title">Dukung Kami via Saweria</h3>
+                            <p class="saweria-subtitle">Bantu kami memberikan layanan yang lebih baik</p>
+                        </div>
+                    </div>
+                    <div class="saweria-action">
+                        <a href="<?php echo $site_config['contact']['saweria']; ?>"
+                            target="_blank" class="btn-saweria">
+                            <span class="btn-icon">💝</span>
+                            <span class="btn-text">Support Saweria</span>
+                            <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     <!-- Vertical Buttons -->
     <div class="vertical-link-list">
-        <a href="<?= $site_config['contact']['saweria']; ?>" target="_blank">💝 Dukung via Saweria</a>
+
         <a href="https://wavestore.id/" target="_blank">Wave Store ID</a>
         <a href="https://discord.com/invite/PxtScDTj4Y" target="_blank">DC KISENITY</a>
         <a href="https://www.youtube.com/channel/UCCjq8-CDPkODruPjlVk2MBg" target="_blank">YOUTUBE KIRITO SENPAI</a>
