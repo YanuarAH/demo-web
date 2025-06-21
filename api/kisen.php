@@ -11,7 +11,7 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
     <title><?php echo $page_title; ?></title>
     <meta name="description" content="<?php echo $site_config['site_description']; ?>">
     <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/style60.css">
+
 
     <style>
         .linktree-grid {
