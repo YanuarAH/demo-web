@@ -291,26 +291,10 @@ $joki_list = [
         <a href="https://wavestore.id/" target="_blank">Wave Store ID</a>
         <a href="https://discord.com/invite/PxtScDTj4Y" target="_blank">DC KISENITY</a>
         <a href="https://www.youtube.com/channel/UCCjq8-CDPkODruPjlVk2MBg" target="_blank">YOUTUBE KIRITO SENPAI</a>
-        <a href="https://twitter.com/kisenjoki" target="_blank">Twitter KISEN JOKI</a>
+        <a href="https://twitter.com/kisenjoki" target="_blank">List Joki</a>
     </div>
 
-    <h2 class="section-title">List Joki</h2>
-    <div class="image-grid">
-        <?php foreach ($joki_list as $item): ?>
-            <div class="image-item">
-                <img src="<?= $item['thumbnail']; ?>" alt="<?= $item['title']; ?>" data-popup="<?= $item['popup']; ?>">
-                <p><?= $item['title']; ?></p>
-            </div>
-        <?php endforeach; ?>
-    </div>
-
-    <!-- Modal -->
-    <div class="image-modal-overlay" id="imageModal">
-        <div class="image-modal-content">
-            <img id="modalImage" src="" alt="Popup">
-            <button class="image-modal-close-text" onclick="closeImageModal()">Close</button>
-        </div>
-    </div>
+    
 </main>
 
 <footer>
