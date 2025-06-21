@@ -16,7 +16,7 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
 
     <!-- Styles -->
     <style>
-        html, body {
+        body {
             margin: 0;
             padding: 0;
             background-color: #0f1a2a;
