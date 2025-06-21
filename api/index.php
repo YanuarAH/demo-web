@@ -2,7 +2,7 @@
 // Daftar halaman dan judul tombolnya
 $pages = [
     ['path' => 'harga60.php', 'title' => 'Harga 60'],
-    ['path' => 'ksien.php', 'title' => 'Kisen'],
+    ['path' => 'kisen.php', 'title' => 'Kisen'],
     // Tambahkan halaman lainnya di sini
 ];
 ?>
