@@ -186,9 +186,9 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
         }
     </style>
 </head>
-
-<body>
 <?php include dirname(__DIR__) . '/includes/header.php'; ?>
+<body>
+
 
 <main class="main-content">
     <h1 class="kisen-title">Kisen Joki</h1>
@@ -221,7 +221,7 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
         <a href="https://wavestore.id/" target="_blank">Wave Store ID</a>
         <a href="https://discord.com/invite/PxtScDTj4Y" target="_blank">DC KISENITY</a>
         <a href="https://www.youtube.com/channel/UCCjq8-CDPkODruPjlVk2MBg" target="_blank">YOUTUBE KIRITO SENPAI</a>
-        <a href="#" onclick="showPopup(event)">List Joki</a>
+        <a href="#" onclick="showPopup(event)">List JokI</a>
     </div>
 
     <!-- Modal Popup Image -->
