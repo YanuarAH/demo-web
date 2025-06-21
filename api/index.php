@@ -97,26 +97,35 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
                 <img src="assets/images/hsr/SPEK PC KISEN.png" alt="Spek PC Kisen">
             </div>
         </div>
+        <h2 class="section-title">List Joki</h2>
         <section class="image-grid-section">
             <div class="image-grid">
                 <div class="image-item">
-                    <img src="assets/images/genshin/quest/char.jpg" alt="Gambar 1">
+                    <img src="assets/images/genshin/quest/char.jpg" alt="Genshin" data-popup="assets/images/popups/genshin-popup.jpg">
                     <p>Genshin Impact</p>
                 </div>
                 <div class="image-item">
-                    <img src="assets/images/wuwa.jpg" alt="Gambar 2">
+                    <img src="assets/images/wuwa.jpg" alt="Wuthering" data-popup="assets/images/popups/wuthering-popup.jpg">
                     <p>Wuthering Waves</p>
                 </div>
                 <div class="image-item">
-                    <img src="assets/images/zzz.jpg" alt="Gambar 3">
+                    <img src="assets/images/zzz.jpg" alt="ZZZ" data-popup="assets/images/popups/zzz-popup.jpg">
                     <p>ZZZ</p>
                 </div>
                 <div class="image-item">
-                    <img src="assets/images/hsr/story/Penacony.png" alt="Gambar 4">
+                    <img src="assets/images/hsr/story/Penacony.jpg" alt="HSR" data-popup="assets/images/popups/hsr-popup.jpg">
                     <p>Honkai Star Rail</p>
                 </div>
             </div>
         </section>
+
+        <!-- Modal Popup -->
+        <div class="image-modal-overlay" id="imageModal">
+            <div class="image-modal-content">
+                <button class="image-modal-close" onclick="closeImageModal()">×</button>
+                <img id="modalImage" src="" alt="Preview Besar">
+            </div>
+        </div>
 
     </main>
 
@@ -124,12 +133,21 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
 
     <script src="assets/js/script.js"></script>
     <script>
-        function openModal() {
-            document.getElementById('spekModal').classList.add('active');
-        }
+        // Tangani klik gambar dengan popup khusus
+        document.querySelectorAll('.image-grid .image-item img').forEach(img => {
+            img.addEventListener('click', () => {
+                const modal = document.getElementById('imageModal');
+                const modalImg = document.getElementById('modalImage');
+                const popupSrc = img.getAttribute('data-popup');
 
-        function closeModal() {
-            document.getElementById('spekModal').classList.remove('active');
+                modalImg.src = popupSrc;
+                modal.classList.add('active');
+            });
+        });
+
+        function closeImageModal() {
+            document.getElementById('imageModal').classList.remove('active');
+            document.getElementById('modalImage').src = '';
         }
     </script>
 </body>
