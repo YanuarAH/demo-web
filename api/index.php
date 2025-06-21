@@ -33,8 +33,12 @@ $joki_list = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $page_title; ?></title>
     <meta name="description" content="<?php echo $site_config['site_description']; ?>">
+    
+    <!-- Font Metal Mania -->
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style60.css">
     <style>
         html, body {
             height: 100%;
@@ -43,33 +47,60 @@ $joki_list = [
             display: flex;
             flex-direction: column;
             background-color: #0f1a2a;
+            font-family: Arial, sans-serif;
         }
 
         .main-content {
             flex: 1;
         }
 
+        .kisen-title {
+            font-family: 'Metal Mania', cursive;
+            font-size: 3rem;
+            color: #ffc107;
+            text-align: center;
+            margin: 2rem 0 1rem 0;
+            letter-spacing: 2px;
+        }
+
         .vertical-link-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin: 20px 0;
+            gap: 10px;
+            margin: 1rem auto;
+            max-width: 600px;
+            padding: 0 1rem;
         }
 
         .vertical-link-list a {
             display: block;
-            text-align: center;
             padding: 14px;
-            font-weight: bold;
             border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .vertical-link-list a:nth-child(odd) {
             background-color: #ffc107;
             color: #000;
-            text-decoration: none;
-            transition: background 0.3s ease;
+        }
+
+        .vertical-link-list a:nth-child(even) {
+            background-color: #1a1a1a;
+            color: #fff;
         }
 
         .vertical-link-list a:hover {
-            background-color: #e0a800;
+            filter: brightness(1.1);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-top: 2rem;
+            color: #fff;
         }
 
         .image-grid {
@@ -77,6 +108,8 @@ $joki_list = [
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
             padding: 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .image-item {
@@ -89,7 +122,6 @@ $joki_list = [
         .image-item img {
             width: 100%;
             cursor: pointer;
-            border-bottom: 1px solid #333;
         }
 
         .image-item p {
@@ -146,7 +178,6 @@ $joki_list = [
             font-size: 20px;
             padding: 5px 12px;
             cursor: pointer;
-            z-index: 10000;
         }
 
         .image-modal-close-text {
@@ -160,7 +191,6 @@ $joki_list = [
             font-weight: bold;
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
         }
 
         .image-modal-close-text:hover {
@@ -173,58 +203,29 @@ $joki_list = [
     <?php include dirname(__DIR__) . '/includes/header.php'; ?>
 
     <main class="main-content">
-        <h1 class="section-title" style="text-align: center; margin-top: 1rem;">Kisen Joki</h1>
+        <h1 class="kisen-title">Kisen Joki</h1>
 
-        <!-- Carousel -->
-        <section class="carousel-section">
-            <div class="container">
-                <div class="carousel-container">
-                    <div class="carousel-wrapper">
-                        <div class="carousel-slide active">
-                            <img src="assets/images/carousel/c1.jpg" alt="Slide 1">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="assets/images/carousel/c2.jpg" alt="Slide 2">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="assets/images/carousel/c3.jpg" alt="Slide 3">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="assets/images/carousel/c4.jpg" alt="Slide 4">
-                        </div>
-                    </div>
+        <!-- Vertical Buttons -->
+        <div class="vertical-link-list">
+            <a href="<?php echo $site_config['contact']['saweria']; ?>" target="_blank">💝 Dukung via Saweria</a>
+            <a href="https://wavestore.id/" target="_blank">Wave Store ID</a>
+            <a href="https://discord.com/invite/PxtScDTj4Y" target="_blank">DC KISENITY</a>
+            <a href="https://www.youtube.com/channel/UCCjq8-CDPkODruPjlVk2MBg" target="_blank">YOUTUBE KIRITO SENPAI</a>
+            <a href="https://twitter.com/kisenjoki" target="_blank">Twitter KISEN JOKI</a>
+        </div>
+
+        <h2 class="section-title">List Joki</h2>
+        <div class="image-grid">
+            <?php foreach ($joki_list as $item): ?>
+                <div class="image-item">
+                    <img src="<?php echo $item['thumbnail']; ?>" alt="<?php echo $item['title']; ?>"
+                         data-popup="<?php echo $item['popup']; ?>">
+                    <p><?php echo $item['title']; ?></p>
                 </div>
-            </div>
-        </section>
+            <?php endforeach; ?>
+        </div>
 
-        <!-- Vertical Links -->
-        <section class="linktree-section">
-            <div class="container">
-                <div class="vertical-link-list">
-                    <a href="<?php echo $site_config['contact']['saweria']; ?>" target="_blank">💝 Dukung via Saweria</a>
-                    <a href="https://wavestore.id/" target="_blank">Wave Store ID</a>
-                    <a href="https://discord.com/invite/PxtScDTj4Y" target="_blank">DC KISENITY</a>
-                    <a href="https://www.youtube.com/channel/UCCjq8-CDPkODruPjlVk2MBg" target="_blank">YOUTUBE KIRITO SENPAI</a>
-                    <a href="https://twitter.com/kisenjoki" target="_blank">Twitter KISEN JOKI</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- List Joki -->
-        <h2 class="section-title" style="text-align: center;">List Joki</h2>
-        <section class="image-grid-section">
-            <div class="image-grid">
-                <?php foreach ($joki_list as $item): ?>
-                    <div class="image-item">
-                        <img src="<?php echo $item['thumbnail']; ?>" alt="<?php echo $item['title']; ?>"
-                             data-popup="<?php echo $item['popup']; ?>">
-                        <p><?php echo $item['title']; ?></p>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </section>
-
-        <!-- Modal Popup -->
+        <!-- Modal -->
         <div class="image-modal-overlay" id="imageModal">
             <div class="image-modal-content">
                 <button class="image-modal-close" onclick="closeImageModal()">×</button>
@@ -238,9 +239,7 @@ $joki_list = [
         © <?php echo date("Y"); ?> Joki Kisen. All Rights Reserved.
     </footer>
 
-    <script src="assets/js/script.js"></script>
     <script>
-        // Modal image logic
         document.querySelectorAll('.image-grid .image-item img').forEach(img => {
             img.addEventListener('click', () => {
                 const modal = document.getElementById('imageModal');
@@ -257,7 +256,6 @@ $joki_list = [
             modalImg.src = '';
         }
 
-        // Close modal on background click
         document.getElementById('imageModal').addEventListener('click', (e) => {
             if (e.target.id === 'imageModal') {
                 closeImageModal();
@@ -265,5 +263,4 @@ $joki_list = [
         });
     </script>
 </body>
-
 </html>
