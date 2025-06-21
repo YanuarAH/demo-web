@@ -84,7 +84,7 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
                 <div class="linktree-grid">
                     <a href="https://wavestore.id/" target="_blank" class="linktree-card">Wave Store ID</a>
                     <a href="https://discord.com/invite/PxtScDTj4Y" target="_blank" class="linktree-card linktree-card--yellow">DC KISENITY</a>
-                    <a href="https://www.youtube.com/channel/UCCjq8-CDPkODruPjlVk2MBg" target="_blank" class="linktree-card" linktree-card--yellow>YOUTUBE KIRITO SENPAI</a>
+                    <a href="https://www.youtube.com/channel/UCCjq8-CDPkODruPjlVk2MBg" target="_blank" class="linktree-card linktree-card--yellow" linktree-card--yellow>YOUTUBE KIRITO SENPAI</a>
                     <a href="https://twitter.com/kisenjoki" target="_blank" class="linktree-card">Twitter KISEN JOKI</a>
                 </div>
             </div>
@@ -124,8 +124,10 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
             <div class="image-modal-content">
                 <button class="image-modal-close" onclick="closeImageModal()">×</button>
                 <img id="modalImage" src="" alt="Preview Besar">
+                <button class="image-modal-close-text" onclick="closeImageModal()">Close</button>
             </div>
         </div>
+
 
     </main>
 
