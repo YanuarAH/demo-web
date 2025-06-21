@@ -1,44 +1,20 @@
 <?php
 require_once dirname(__DIR__) . '/config/games.php';
 $page_title = 'Beranda - ' . $site_config['site_name'];
-
-$joki_list = [
-    [
-        'title' => 'Genshin Impact',
-        'thumbnail' => 'assets/images/genshin/quest/char.jpg',
-        'popup' => 'assets/images/genshin/listjoki.jpeg'
-    ],
-    [
-        'title' => 'Wuthering Waves',
-        'thumbnail' => 'assets/images/wuwa.jpg',
-        'popup' => 'assets/images/genshin/listjoki.jpeg'
-    ],
-    [
-        'title' => 'ZZZ',
-        'thumbnail' => 'assets/images/zzz.jpg',
-        'popup' => 'assets/images/genshin/listjoki.jpeg'
-    ],
-    [
-        'title' => 'Honkai Star Rail',
-        'thumbnail' => 'assets/images/hsr/story/Penacony.jpg',
-        'popup' => 'assets/images/genshin/listjoki.jpeg'
-    ]
-];
 ?>
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?= $page_title ?></title>
-    <meta name="description" content="<?= $site_config['site_description'] ?>">
+    <meta name="description" content="<?= $site_config['site_description'] ?>" />
 
     <!-- Font Metal Mania -->
     <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/style.css">
     <style>
         html, body {
             margin: 0;
@@ -62,9 +38,9 @@ $joki_list = [
             color: #ffc107;
         }
 
-      .carousel-section {
-    padding: 2rem 1rem; 
-}
+        .carousel-section {
+            padding: 2rem 1rem;
+        }
 
         .carousel-container {
             max-width: 800px;
@@ -163,31 +139,12 @@ $joki_list = [
             color: #fff;
         }
 
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            padding: 1rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .image-item {
-            background: #1a2b3c;
-            border-radius: 8px;
-            overflow: hidden;
+        footer {
+            background-color: #0a1320;
+            color: #aaa;
             text-align: center;
-        }
-
-        .image-item img {
-            width: 100%;
-            cursor: pointer;
-        }
-
-        .image-item p {
-            padding: 10px;
-            color: #fff;
-            margin: 0;
+            padding: 1rem;
+            font-size: 0.9rem;
         }
 
         .image-modal-overlay {
@@ -216,21 +173,16 @@ $joki_list = [
             border-radius: 10px;
         }
 
-        .image-modal-close, .image-modal-close-text {
+        .image-modal-close {
+            position: absolute;
+            top: -10px;
+            right: -10px;
             background: #ffc107;
             border: none;
-            padding: 8px 16px;
-            margin-top: 10px;
+            padding: 6px 10px;
             cursor: pointer;
             font-weight: bold;
-        }
-
-        footer {
-            background-color: #0a1320;
-            color: #aaa;
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.9rem;
+            border-radius: 50%;
         }
     </style>
 </head>
@@ -241,7 +193,7 @@ $joki_list = [
 <main class="main-content">
     <h1 class="kisen-title">Kisen Joki</h1>
 
-    <!-- Carousel Section -->
+    <!-- Carousel -->
     <section class="carousel-section">
         <div class="carousel-container">
             <div class="carousel-wrapper" id="carouselSlides">
@@ -263,56 +215,31 @@ $joki_list = [
         </div>
     </section>
 
-    <!-- Vertical Buttons -->
+    <!-- Vertical Button Links -->
     <div class="vertical-link-list">
         <a href="<?= $site_config['contact']['saweria']; ?>" target="_blank">💝 Dukung via Saweria</a>
         <a href="https://wavestore.id/" target="_blank">Wave Store ID</a>
         <a href="https://discord.com/invite/PxtScDTj4Y" target="_blank">DC KISENITY</a>
         <a href="https://www.youtube.com/channel/UCCjq8-CDPkODruPjlVk2MBg" target="_blank">YOUTUBE KIRITO SENPAI</a>
-        <a href="https://twitter.com/kisenjoki" target="_blank">Twitter KISEN JOKI</a>
+        <a href="#" onclick="showPopup(event)">List Joki</a>
     </div>
 
-    <!-- <h2 class="section-title">List Joki</h2>
-    <div class="image-grid">
-        <?php foreach ($joki_list as $item): ?>
-            <div class="image-item">
-                <img src="<?= $item['thumbnail']; ?>" alt="<?= $item['title']; ?>" data-popup="<?= $item['popup']; ?>">
-                <p><?= $item['title']; ?></p>
-            </div>
-        <?php endforeach; ?>
-    </div> -->
-
-    <!-- Modal -->
-    <!-- <div class="image-modal-overlay" id="imageModal">
+    <!-- Modal Popup Image -->
+    <div class="image-modal-overlay" id="imageModal">
         <div class="image-modal-content">
-            <img id="modalImage" src="" alt="Popup">
-            <button class="image-modal-close-text" onclick="closeImageModal()">Close</button>
+            <button class="image-modal-close" onclick="closeImageModal()">×</button>
+            <img id="modalImage" src="assets/images/genshin/listjoki.jpeg" alt="List Joki">
         </div>
-    </div> -->
+    </div>
 </main>
 
 <footer>
     © <?= date('Y'); ?> Joki Kisen. All Rights Reserved.
 </footer>
 
-<!-- Scripts -->
+<!-- JS -->
 <script>
-    // Modal
-    document.querySelectorAll('.image-item img').forEach(img => {
-        img.addEventListener('click', () => {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            modalImg.src = img.dataset.popup;
-            modal.classList.add('active');
-        });
-    });
-
-    function closeImageModal() {
-        document.getElementById('imageModal').classList.remove('active');
-        document.getElementById('modalImage').src = '';
-    }
-
-    // Carousel Logic
+    // Carousel
     let currentSlide = 0;
     const slides = document.querySelectorAll('.carousel-slide');
     const indicators = document.querySelectorAll('.indicator');
@@ -326,20 +253,29 @@ $joki_list = [
     }
 
     function nextSlide() {
-        let next = (currentSlide + 1) % slides.length;
-        showSlide(next);
+        showSlide((currentSlide + 1) % slides.length);
     }
 
     function prevSlide() {
-        let prev = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(prev);
+        showSlide((currentSlide - 1 + slides.length) % slides.length);
     }
 
     function goToSlide(index) {
         showSlide(index);
     }
 
-    setInterval(nextSlide, 4000); // Auto-slide every 4 sec
+    setInterval(nextSlide, 4000);
+
+    // Modal PopUp
+    function showPopup(e) {
+        e.preventDefault();
+        document.getElementById('imageModal').classList.add('active');
+    }
+
+    function closeImageModal() {
+        document.getElementById('imageModal').classList.remove('active');
+        document.getElementById('modalImage').src = 'assets/images/genshin/listjoki.jpeg';
+    }
 </script>
 </body>
 </html>
