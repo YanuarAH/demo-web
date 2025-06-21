@@ -17,6 +17,30 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
 
 <body>
     <?php include dirname(__DIR__) . '/includes/header.php'; ?>
+    <?php
+    $joki_list = [
+        [
+            'title' => 'Genshin Impact',
+            'thumbnail' => 'assets/images/genshin/quest/char.jpg',
+            'popup' => 'assets/images/popups/genshin-popup.jpg'
+        ],
+        [
+            'title' => 'Wuthering Waves',
+            'thumbnail' => 'assets/images/wuwa.jpg',
+            'popup' => 'assets/images/popups/wuthering-popup.jpg'
+        ],
+        [
+            'title' => 'ZZZ',
+            'thumbnail' => 'assets/images/zzz.jpg',
+            'popup' => 'assets/images/popups/zzz-popup.jpg'
+        ],
+        [
+            'title' => 'Honkai Star Rail',
+            'thumbnail' => 'assets/images/hsr/story/Penacony.jpg',
+            'popup' => 'assets/images/popups/hsr-popup.jpg'
+        ]
+    ];
+    ?>
 
     <main class="main-content">
 
@@ -100,24 +124,16 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
         <h2 class="section-title">List Joki</h2>
         <section class="image-grid-section">
             <div class="image-grid">
-                <div class="image-item">
-                    <img src="assets/images/genshin/quest/char.jpg" alt="Genshin" data-popup="assets/images/popups/genshin-popup.jpg">
-                    <p>Genshin Impact</p>
-                </div>
-                <div class="image-item">
-                    <img src="assets/images/wuwa.jpg" alt="Wuthering" data-popup="assets/images/popups/wuthering-popup.jpg">
-                    <p>Wuthering Waves</p>
-                </div>
-                <div class="image-item">
-                    <img src="assets/images/zzz.jpg" alt="ZZZ" data-popup="assets/images/popups/zzz-popup.jpg">
-                    <p>ZZZ</p>
-                </div>
-                <div class="image-item">
-                    <img src="assets/images/hsr/story/Penacony.jpg" alt="HSR" data-popup="assets/images/popups/hsr-popup.jpg">
-                    <p>Honkai Star Rail</p>
-                </div>
+                <?php foreach ($joki_list as $item): ?>
+                    <div class="image-item">
+                        <img src="<?php echo $item['thumbnail']; ?>" alt="<?php echo $item['title']; ?>"
+                            data-popup="<?php echo $item['popup']; ?>">
+                        <p><?php echo $item['title']; ?></p>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </section>
+
 
         <!-- Modal Popup -->
         <div class="image-modal-overlay" id="imageModal">

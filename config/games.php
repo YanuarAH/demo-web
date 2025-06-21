@@ -188,4 +188,5 @@ $site_config = [
         'Joki dikerjakan 100% MANUAL no cheat',
         'Kemahalan? Silahkan bisa nego',
     ]
+    
 ];
