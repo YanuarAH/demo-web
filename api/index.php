@@ -101,7 +101,7 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background-image: url('assets/images/bg-button.jpg'); /* <- Ganti jika beda nama file */
+            background-image: url('assets/images/hsr/bg-ff.png'); /* <- Ganti jika beda nama file */
             background-size: cover;
             background-position: center;
             opacity: 0.25;
