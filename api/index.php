@@ -158,8 +158,8 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
 
     <!-- Modal Pop-up --> 
     <div class="modal-overlay" id="modalPopup">
+        <button class="modal-close" onclick="closeModal()">Close</button>
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">Close</button>
             <img src="assets/images/genshin/listjoki.jpeg" alt="Daftar Harga">
         </div>
     </div>
