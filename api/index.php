@@ -22,22 +22,22 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
         [
             'title' => 'Genshin Impact',
             'thumbnail' => 'assets/images/genshin/quest/char.jpg',
-            'popup' => 'assets/images/popups/genshin-popup.jpg'
+            'popup' => 'assets/images/genshin/listjoki.jpg'
         ],
         [
             'title' => 'Wuthering Waves',
             'thumbnail' => 'assets/images/wuwa.jpg',
-            'popup' => 'assets/images/popups/wuthering-popup.jpg'
+           'popup' => 'assets/images/genshin/listjoki.jpg'
         ],
         [
             'title' => 'ZZZ',
             'thumbnail' => 'assets/images/zzz.jpg',
-            'popup' => 'assets/images/popups/zzz-popup.jpg'
+           'popup' => 'assets/images/genshin/listjoki.jpg'
         ],
         [
             'title' => 'Honkai Star Rail',
             'thumbnail' => 'assets/images/hsr/story/Penacony.jpg',
-            'popup' => 'assets/images/popups/hsr-popup.jpg'
+             'popup' => 'assets/images/genshin/listjoki.jpg'
         ]
     ];
     ?>
