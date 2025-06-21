@@ -5,6 +5,7 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,12 +19,20 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
         body {
             margin: 0;
             padding: 0;
-            background-color: #0f1a2a;
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+
+            background-color: #0f1a2a;
+            background-image: url('assets/images/hsr/bg-ff2.jpg');
+            /* Ganti dengan path background kamu */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
+
 
         .main-content {
             flex: 1;
@@ -99,9 +108,12 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
         .button-image-bg::before {
             content: "";
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-image: url('assets/images/hsr/bg-ff.png'); /* <- Ganti jika beda nama file */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/images/hsr/bg-ff.png');
+            /* <- Ganti jika beda nama file */
             background-size: cover;
             background-position: center;
             opacity: 0.25;
@@ -180,48 +192,49 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
 </head>
 
 <body>
-<?php include dirname(__DIR__) . '/includes/header.php'; ?>
+    <?php include dirname(__DIR__) . '/includes/header.php'; ?>
 
-<main class="main-content">
-    <img src="assets/images/profile.png" alt="Foto Profil" class="profile-pic">
-    <h1 class="kisen-title">Kisen Joki</h1>
+    <main class="main-content">
+        <img src="assets/images/profile.png" alt="Foto Profil" class="profile-pic">
+        <h1 class="kisen-title">Kisen Joki</h1>
 
-    <div class="vertical-link-list">
-        <a href="https://discord.com/invite/PxtScDTj4Y" target="_blank">Discord</a>
+        <div class="vertical-link-list">
+            <a href="https://discord.com/invite/PxtScDTj4Y" target="_blank">Discord</a>
 
-        <a href="<?= $site_config['contact']['saweria']; ?>" target="_blank" class="button-image-bg">
-            <span>Saweria</span>
-        </a>
+            <a href="<?= $site_config['contact']['saweria']; ?>" target="_blank" class="button-image-bg">
+                <span>Saweria</span>
+            </a>
 
-        <a href="https://wa.me/6281234567890" target="_blank">WhatsApp</a>
+            <a href="https://wa.me/6281234567890" target="_blank">WhatsApp</a>
 
-        <button class="button-image-bg" onclick="openModal()">
-            <span>Price List</span>
-        </button>
+            <button class="button-image-bg" onclick="openModal()">
+                <span>Price List</span>
+            </button>
+        </div>
+    </main>
+
+    <!-- Modal Pop-up -->
+    <div class="modal-overlay" id="modalPopup">
+        <button class="modal-close" onclick="closeModal()">Close</button>
+        <div class="modal-content">
+            <img src="assets/images/genshin/listjoki.jpeg" alt="Daftar Harga">
+        </div>
     </div>
-</main>
 
-<!-- Modal Pop-up -->
-<div class="modal-overlay" id="modalPopup">
-    <button class="modal-close" onclick="closeModal()">Close</button>
-    <div class="modal-content">
-        <img src="assets/images/genshin/listjoki.jpeg" alt="Daftar Harga">
-    </div>
-</div>
+    <footer>
+        © <?= date('Y'); ?> Joki Kisen. All Rights Reserved.
+    </footer>
 
-<footer>
-    © <?= date('Y'); ?> Joki Kisen. All Rights Reserved.
-</footer>
+    <script>
+        function openModal() {
+            document.getElementById('modalPopup').classList.add('active');
+        }
 
-<script>
-    function openModal() {
-        document.getElementById('modalPopup').classList.add('active');
-    }
-
-    function closeModal() {
-        document.getElementById('modalPopup').classList.remove('active');
-    }
-</script>
+        function closeModal() {
+            document.getElementById('modalPopup').classList.remove('active');
+        }
+    </script>
 
 </body>
+
 </html>
