@@ -38,8 +38,9 @@ $joki_list = [
         html, body {
             margin: 0;
             padding: 0;
-            background-color: #0f1a2a;
             font-family: Arial, sans-serif;
+            background: url('assets/images/hsr/bg-ff.png') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -142,14 +143,46 @@ $joki_list = [
             transition: background-color 0.3s ease;
         }
 
-        .vertical-link-list a:nth-child(odd) {
+        .vertical-link-list a:nth-child(odd):not(.button-image-bg) {
             background-color: #ffc107;
             color: #000;
         }
 
-        .vertical-link-list a:nth-child(even) {
+        .vertical-link-list a:nth-child(even):not(.button-image-bg) {
             background-color: #1a1a1a;
             color: #fff;
+        }
+
+        .button-image-bg {
+            position: relative;
+            background-color: #000;
+            color: white;
+            font-weight: bold;
+            padding: 14px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            overflow: hidden;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .button-image-bg::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: url('assets/images/hsr/bg-ff.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.25;
+            z-index: 0;
+        }
+
+        .button-image-bg span {
+            position: relative;
+            z-index: 1;
         }
 
         footer {
@@ -181,18 +214,22 @@ $joki_list = [
             position: relative;
             max-width: 100%;
             max-height: 100%;
+            width: 100%;
         }
 
         .image-modal-content img {
             max-width: 100%;
-            max-height: 100%;
+            max-height: calc(100vh - 30px);
+            object-fit: contain;
             border-radius: 10px;
+            display: block;
+            margin: auto;
         }
 
         .image-modal-close {
             position: absolute;
-            top: -10px;
-            right: -10px;
+            top: 10px;
+            right: 10px;
             background: #ffc107;
             color: black;
             font-size: 1.5rem;
@@ -202,74 +239,22 @@ $joki_list = [
             width: 30px;
             height: 30px;
             cursor: pointer;
+            z-index: 9999;
         }
-        .image-modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    box-sizing: border-box;
-    z-index: 1000;
-}
 
-.image-modal-overlay.active {
-    display: flex;
-}
+        @media (max-width: 600px) {
+            .image-modal-content img {
+                max-height: 80vh;
+            }
 
-.image-modal-content {
-    position: relative;
-    max-width: 100%;
-    max-height: 100%;
-    width: 100%;
-    height: auto;
-}
-
-.image-modal-content img {
-    max-width: 100%;
-    max-height: calc(100vh - 30px);
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    border-radius: 10px;
-    display: block;
-    margin: auto;
-}
-
-.image-modal-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #ffc107;
-    color: black;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    z-index: 9999;
-}
-
-/* RESPONSIF KHUSUS UNTUK HP */
-@media (max-width: 600px) {
-    .image-modal-content img {
-        max-height: 80vh;
-    }
-
-    .image-modal-close {
-        width: 28px;
-        height: 28px;
-        font-size: 1.2rem;
-        top: 5px;
-        right: 5px;
-    }
-}
-
+            .image-modal-close {
+                width: 28px;
+                height: 28px;
+                font-size: 1.2rem;
+                top: 5px;
+                right: 5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -303,14 +288,15 @@ $joki_list = [
 
     <!-- Vertical Buttons -->
     <div class="vertical-link-list">
-        <a href="<?= $site_config['contact']['saweria']; ?>" target="_blank">💝 Dukung via Saweria</a>
+        <a href="<?= $site_config['contact']['saweria']; ?>" target="_blank" class="button-image-bg"><span>💝 Dukung via Saweria</span></a>
         <a href="https://wavestore.id/" target="_blank">Wave Store ID</a>
         <a href="https://discord.com/invite/PxtScDTj4Y" target="_blank">DC KISENITY</a>
         <a href="https://www.youtube.com/channel/UCCjq8-CDPkODruPjlVk2MBg" target="_blank">YOUTUBE KIRITO SENPAI</a>
-        <a href="#" onclick="openImageModal('assets/images/genshin/listjoki.jpeg')">LIST JOKI</a>
+        <a href="#" class="button-image-bg" onclick="openImageModal('assets/images/genshin/listjoki.jpeg')"><span>LIST JOKI</span></a>
     </div>
+</main>
 
-<!-- Modal HTML -->
+<!-- Modal -->
 <div class="image-modal-overlay" id="imageModal">
     <div class="image-modal-content">
         <button class="image-modal-close" onclick="closeImageModal()">×</button>
@@ -318,15 +304,11 @@ $joki_list = [
     </div>
 </div>
 
-</main>
-
 <footer>
     © <?= date('Y'); ?> Joki Kisen. All Rights Reserved.
 </footer>
 
-<!-- Scripts -->
 <script>
-    // Modal Popup
     function openImageModal(imageSrc) {
         document.getElementById('modalImage').src = imageSrc;
         document.getElementById('imageModal').classList.add('active');
@@ -337,7 +319,6 @@ $joki_list = [
         document.getElementById('modalImage').src = '';
     }
 
-    // Carousel
     let currentSlide = 0;
     const slides = document.querySelectorAll('.carousel-slide');
     const indicators = document.querySelectorAll('.indicator');
@@ -351,13 +332,11 @@ $joki_list = [
     }
 
     function nextSlide() {
-        let next = (currentSlide + 1) % slides.length;
-        showSlide(next);
+        showSlide((currentSlide + 1) % slides.length);
     }
 
     function prevSlide() {
-        let prev = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(prev);
+        showSlide((currentSlide - 1 + slides.length) % slides.length);
     }
 
     function goToSlide(index) {
@@ -366,5 +345,6 @@ $joki_list = [
 
     setInterval(nextSlide, 4000);
 </script>
+
 </body>
 </html>
