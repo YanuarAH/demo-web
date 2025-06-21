@@ -1,0 +1,22 @@
+/* Layout dasar agar footer selalu di bawah */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #0f1a2a;
+}
+
+.main-content {
+    flex: 1;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #141e30;
+    color: #aaa;
+    font-size: 0.9rem;
+}

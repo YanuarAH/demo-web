@@ -12,6 +12,7 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
     <meta name="description" content="<?php echo $site_config['site_description']; ?>">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style60.css">
+    <link rel="stylesheet" href="assets/css/style35.css">
 
 </head>
 
