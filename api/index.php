@@ -203,6 +203,73 @@ $joki_list = [
             height: 30px;
             cursor: pointer;
         }
+        .image-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.image-modal-overlay.active {
+    display: flex;
+}
+
+.image-modal-content {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: auto;
+}
+
+.image-modal-content img {
+    max-width: 100%;
+    max-height: calc(100vh - 30px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+}
+
+.image-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ffc107;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+/* RESPONSIF KHUSUS UNTUK HP */
+@media (max-width: 600px) {
+    .image-modal-content img {
+        max-height: 80vh;
+    }
+
+    .image-modal-close {
+        width: 28px;
+        height: 28px;
+        font-size: 1.2rem;
+        top: 5px;
+        right: 5px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -243,13 +310,14 @@ $joki_list = [
         <a href="#" onclick="openImageModal('assets/images/genshin/listjoki.jpeg')">LIST JOKI</a>
     </div>
 
-    <!-- Image Modal -->
-    <div class="image-modal-overlay" id="imageModal">
-        <div class="image-modal-content">
-            <button class="image-modal-close" onclick="closeImageModal()">×</button>
-            <img id="modalImage" src="" alt="List Joki">
-        </div>
+<!-- Modal HTML -->
+<div class="image-modal-overlay" id="imageModal">
+    <div class="image-modal-content">
+        <button class="image-modal-close" onclick="closeImageModal()">×</button>
+        <img id="modalImage" src="" alt="Preview Gambar">
     </div>
+</div>
+
 </main>
 
 <footer>
