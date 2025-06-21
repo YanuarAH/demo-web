@@ -114,38 +114,7 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
             </div>
         </section>
 
-        <!-- Modal SPEK PC -->
-        <div class="modal-overlay" id="spekModal">
-            <div class="modal-content">
-                <button class="modal-close" onclick="closeModal()">X</button>
-                <img src="assets/images/hsr/SPEK PC KISEN.png" alt="Spek PC Kisen">
-            </div>
-        </div>
-        <h2 class="section-title">List Joki</h2>
-        <section class="image-grid-section">
-            <div class="image-grid">
-                <?php foreach ($joki_list as $item): ?>
-                    <div class="image-item">
-                        <img src="<?php echo $item['thumbnail']; ?>" alt="<?php echo $item['title']; ?>"
-                            data-popup="<?php echo $item['popup']; ?>">
-                        <p><?php echo $item['title']; ?></p>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </section>
-
-
-        <!-- Modal Popup -->
-        <div class="image-modal-overlay" id="imageModal">
-            <div class="image-modal-content">
-                <button class="image-modal-close" onclick="closeImageModal()">×</button>
-                <img id="modalImage" src="" alt="Preview Besar">
-                <button class="image-modal-close-text" onclick="closeImageModal()">Close</button>
-            </div>
-        </div>
-
-
-    </main>
+        
 
     <?php include dirname(__DIR__) . '/includes/footer.php'; ?>
 

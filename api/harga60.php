@@ -11,11 +11,36 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
     <title><?php echo $page_title; ?></title>
     <meta name="description" content="<?php echo $site_config['site_description']; ?>">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style60.css">
 
 </head>
 
 <body>
     <?php include dirname(__DIR__) . '/includes/header.php'; ?>
+    <?php
+    $joki_list = [
+        [
+            'title' => 'Genshin Impact',
+            'thumbnail' => 'assets/images/genshin/quest/char.jpg',
+            'popup' => 'assets/images/genshin/listjoki.jpeg'
+        ],
+        [
+            'title' => 'Wuthering Waves',
+            'thumbnail' => 'assets/images/wuwa.jpg',
+           'popup' => 'assets/images/genshin/listjoki.jpeg'
+        ],
+        [
+            'title' => 'ZZZ',
+            'thumbnail' => 'assets/images/zzz.jpg',
+           'popup' => 'assets/images/genshin/listjoki.jpeg'
+        ],
+        [
+            'title' => 'Honkai Star Rail',
+            'thumbnail' => 'assets/images/hsr/story/Penacony.jpg',
+             'popup' => 'assets/images/genshin/listjoki.jpeg'
+        ]
+    ];
+    ?>
 
     <main class="main-content">
 
@@ -83,9 +108,8 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
                 <div class="linktree-grid">
                     <a href="https://wavestore.id/" target="_blank" class="linktree-card">Wave Store ID</a>
                     <a href="https://discord.com/invite/PxtScDTj4Y" target="_blank" class="linktree-card linktree-card--yellow">DC KISENITY</a>
-                    <a href="https://www.youtube.com/channel/UCCjq8-CDPkODruPjlVk2MBg" target="_blank" class="linktree-card">YOUTUBE KIRITO SENPAI</a>
-                    <a href="https://twitter.com/kisenjoki" target="_blank" class="linktree-card linktree-card--yellow">Twitter KISEN JOKI</a>
-                    <button onclick="openModal()" class="linktree-card">SPEK PC KISEN</button>
+                    <a href="https://www.youtube.com/channel/UCCjq8-CDPkODruPjlVk2MBg" target="_blank" class="linktree-card linktree-card--yellow" linktree-card--yellow>YOUTUBE KIRITO SENPAI</a>
+                    <a href="https://twitter.com/kisenjoki" target="_blank" class="linktree-card">Twitter KISEN JOKI</a>
                 </div>
             </div>
         </section>
@@ -97,26 +121,29 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
                 <img src="assets/images/hsr/SPEK PC KISEN.png" alt="Spek PC Kisen">
             </div>
         </div>
+        <h2 class="section-title">List Joki</h2>
         <section class="image-grid-section">
             <div class="image-grid">
-                <div class="image-item">
-                    <img src="assets/images/hsr/88695074-7133-4a02-ab4a-6a13a7213d99.png" alt="Gambar 1">
-                    <p>Caption Gambar 1</p>
-                </div>
-                <div class="image-item">
-                    <img src="assets/images/hsr/88695074-7133-4a02-ab4a-6a13a7213d99.png" alt="Gambar 2">
-                    <p>Caption Gambar 2</p>
-                </div>
-                <div class="image-item">
-                    <img src="assets/images/hsr/88695074-7133-4a02-ab4a-6a13a7213d99.png" alt="Gambar 3">
-                    <p>Caption Gambar 3</p>
-                </div>
-                <div class="image-item">
-                    <img src="assets/images/hsr/88695074-7133-4a02-ab4a-6a13a7213d99.png" alt="Gambar 4">
-                    <p>Caption Gambar 4</p>
-                </div>
+                <?php foreach ($joki_list as $item): ?>
+                    <div class="image-item">
+                        <img src="<?php echo $item['thumbnail']; ?>" alt="<?php echo $item['title']; ?>"
+                            data-popup="<?php echo $item['popup']; ?>">
+                        <p><?php echo $item['title']; ?></p>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </section>
+
+
+        <!-- Modal Popup -->
+        <div class="image-modal-overlay" id="imageModal">
+            <div class="image-modal-content">
+                <button class="image-modal-close" onclick="closeImageModal()">×</button>
+                <img id="modalImage" src="" alt="Preview Besar">
+                <button class="image-modal-close-text" onclick="closeImageModal()">Close</button>
+            </div>
+        </div>
+
 
     </main>
 
@@ -124,12 +151,21 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
 
     <script src="assets/js/script.js"></script>
     <script>
-        function openModal() {
-            document.getElementById('spekModal').classList.add('active');
-        }
+        // Tangani klik gambar dengan popup khusus
+        document.querySelectorAll('.image-grid .image-item img').forEach(img => {
+            img.addEventListener('click', () => {
+                const modal = document.getElementById('imageModal');
+                const modalImg = document.getElementById('modalImage');
+                const popupSrc = img.getAttribute('data-popup');
 
-        function closeModal() {
-            document.getElementById('spekModal').classList.remove('active');
+                modalImg.src = popupSrc;
+                modal.classList.add('active');
+            });
+        });
+
+        function closeImageModal() {
+            document.getElementById('imageModal').classList.remove('active');
+            document.getElementById('modalImage').src = '';
         }
     </script>
 </body>
