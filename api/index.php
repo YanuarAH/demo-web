@@ -84,9 +84,8 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
                 <div class="linktree-grid">
                     <a href="https://wavestore.id/" target="_blank" class="linktree-card">Wave Store ID</a>
                     <a href="https://discord.com/invite/PxtScDTj4Y" target="_blank" class="linktree-card linktree-card--yellow">DC KISENITY</a>
-                    <a href="https://www.youtube.com/channel/UCCjq8-CDPkODruPjlVk2MBg" target="_blank" class="linktree-card">YOUTUBE KIRITO SENPAI</a>
-                    <a href="https://twitter.com/kisenjoki" target="_blank" class="linktree-card linktree-card--yellow">Twitter KISEN JOKI</a>
-                    <button onclick="openModal()" class="linktree-card">SPEK PC KISEN</button>
+                    <a href="https://www.youtube.com/channel/UCCjq8-CDPkODruPjlVk2MBg" target="_blank" class="linktree-card" linktree-card--yellow>YOUTUBE KIRITO SENPAI</a>
+                    <a href="https://twitter.com/kisenjoki" target="_blank" class="linktree-card">Twitter KISEN JOKI</a>
                 </div>
             </div>
         </section>
@@ -101,20 +100,20 @@ $page_title = 'Beranda - ' . $site_config['site_name'];
         <section class="image-grid-section">
             <div class="image-grid">
                 <div class="image-item">
-                    <img src="assets/images/hsr/88695074-7133-4a02-ab4a-6a13a7213d99.png" alt="Gambar 1">
-                    <p>Caption Gambar 1</p>
+                    <img src="assets/images/genshin/quest/char.jpg" alt="Gambar 1">
+                    <p>Genshin Impact</p>
                 </div>
                 <div class="image-item">
-                    <img src="assets/images/hsr/88695074-7133-4a02-ab4a-6a13a7213d99.png" alt="Gambar 2">
-                    <p>Caption Gambar 2</p>
+                    <img src="assets/images/wuwa.jpg" alt="Gambar 2">
+                    <p>Wuthering Waves</p>
                 </div>
                 <div class="image-item">
-                    <img src="assets/images/hsr/88695074-7133-4a02-ab4a-6a13a7213d99.png" alt="Gambar 3">
-                    <p>Caption Gambar 3</p>
+                    <img src="assets/images/zzz.jpg" alt="Gambar 3">
+                    <p>ZZZ</p>
                 </div>
                 <div class="image-item">
-                    <img src="assets/images/hsr/88695074-7133-4a02-ab4a-6a13a7213d99.png" alt="Gambar 4">
-                    <p>Caption Gambar 4</p>
+                    <img src="assets/images/hsr/story/Penacony.png" alt="Gambar 4">
+                    <p>Honkai Star Rail</p>
                 </div>
             </div>
         </section>
